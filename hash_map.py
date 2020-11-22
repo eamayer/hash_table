@@ -201,8 +201,8 @@ class HashMap:
 
         for i in range(new_capacity+1):
             self.buckets.append(new_hash_map.buckets.pop)
-
-        self.update_capacity(new_capacity)
+        #
+        # self.update_capacity(new_capacity)
 
     def update_capacity(self, new_capacity):
 
