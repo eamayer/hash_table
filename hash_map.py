@@ -98,7 +98,7 @@ class HashMap:
         if index > self.capacity:  # if the index is more than th capacity, it can't be in the hash table
             return
         elif index_value.head is None:  # if the head is none, there index is empty
-            self.buckets.get_at_index(index).insert(key, value)  # can insert directly
+            self.buckets.get_at_index(43).insert(key, value)  # can insert directly
             self.size += 1  # increase the size since there is a new value being added
         # elif self.buckets.get_at_index(index).contains(key) is not None:  # index is not empty
         #     pointer = self.buckets.get_at_index(index).contains(key)  # find the key
