@@ -92,29 +92,28 @@ class HashMap:
         hash_value = self.hash_value(key, self.hash_function)
         index = self.index(hash_value, self.capacity)
 
-        index_value = self.buckets.get_at_index(index)
-
-
         if index > self.capacity:  # if the index is more than th capacity, it can't be in the hash table
             return
-        elif index_value.head is None:  # if the head is none, there index is empty
-            self.buckets.get_at_index(43).insert(key, value)  # can insert directly
+        elif self.buckets.get_at_index(index).head is None:  # if the head is none, there index is empty
+            self.buckets.get_at_index(index).insert(key, value)  # can insert directly
             self.size += 1  # increase the size since there is a new value being added
-        # elif self.buckets.get_at_index(index).contains(key) is not None:  # index is not empty
-        #     pointer = self.buckets.get_at_index(index).contains(key)  # find the key
-        #     pointer.value = value
-        # else:
-        #     self.buckets.get_at_index(index).insert(key, value)
-        #     self.size += 1
+        elif self.buckets.get_at_index(index).contains(key) is not None:  # index is not empty
+            pointer = self.buckets.get_at_index(index).contains(key)  # find the key
+            pointer.value = value
+        else:
+            self.buckets.get_at_index(index).insert(key, value)
+            self.size += 1
 
     def hash_value(self, key, hash_function):
         """returns the hash value based on the hash function used"""
+        hash_function_return = None
 
         if hash_function == hash_function_1:
-            hash_value = hash_function_1(key)
+            hash_function_return = hash_function_1(key)
         else:
-            hash_value = hash_function_2(key)
-        return hash_value
+            hash_function_return = hash_function_2(key)
+
+        return hash_function_return
 
     def index(self, hash_value, array_size):
         index = 0
@@ -134,7 +133,7 @@ class HashMap:
 
     def contains_key(self, key: str) -> bool:
         """
-        TODO: Write this implementation
+        Determine if a key is in a hash table
         """
 
         for i in range(self.capacity):
@@ -290,8 +289,10 @@ if __name__ == "__main__":
     m = HashMap(50, hash_function_1)
     for i in range(150):
         m.put('str' + str(i), i * 100)
-        if i % 25 == 24:
-            print(m.empty_buckets(), m.table_load(), m.size, m.capacity)
+        # if i % 25 == 24:
+        print(m.empty_buckets(), m.table_load(), m.size, m.capacity)
+        for i in range(50):
+            print(i, m.buckets.get_at_index(i))
 
 
     print("\nPDF - put example 2")
