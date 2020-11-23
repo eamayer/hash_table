@@ -92,14 +92,14 @@ class HashMap:
         hash_value = self.hash_value(key, self.hash_function)
         index = self.index(hash_value, self.capacity)
 
-        if index > self.capacity:  # if the index is more than th capacity, it can't be in the hash table
+        if index > self.capacity:  # if the index is more than the capacity, it can't be in the hash table
             return
-        elif self.buckets.get_at_index(index).head is None:  # if the head is none, there index is empty
-            self.buckets.get_at_index(index).insert(key, value)  # can insert directly
-            self.size += 1  # increase the size since there is a new value being added
         elif self.buckets.get_at_index(index).contains(key) is not None:  # index is not empty
             pointer = self.buckets.get_at_index(index).contains(key)  # find the key
             pointer.value = value
+        elif self.buckets.get_at_index(index).head is None:  # if the head is none, there index is empty
+            self.buckets.get_at_index(index).insert(key, value)  # can insert directly
+            self.size += 1  # increase the size since there is a new value being added
         else:
             self.buckets.get_at_index(index).insert(key, value)
             self.size += 1
@@ -116,7 +116,7 @@ class HashMap:
         return hash_function_return
 
     def index(self, hash_value, array_size):
-        index = 0
+
         if array_size != 0:
             index = hash_value % array_size
 
