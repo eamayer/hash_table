@@ -101,7 +101,7 @@ class MinHeap:
             r = self.right(i)
             if r < n and self.heap.get_at_index(r) < self.heap.get_at_index(i):
                 l = self.left(i)
-                if self.heap.get_at_index(l) < self.heap.get_at_index(r):
+                if self.heap.get_at_index(l) <= self.heap.get_at_index(r):
                     j = l
                 else:
                     j = r
@@ -140,11 +140,11 @@ if __name__ == '__main__':
     #     print(h)
     #
 
-    print("\nPDF - get_min example 1")
-    print("-----------------------")
-    h = MinHeap(['fish', 'bird'])
-    print(h)
-    print(h.get_min(), h.get_min())
+    # print("\nPDF - get_min example 1")
+    # print("-----------------------")
+    # h = MinHeap(['fish', 'bird'])
+    # print(h)
+    # print(h.get_min(), h.get_min())
 
     # print("\nPDF - get_min example raise exception")
     # print("-----------------------")
@@ -153,10 +153,21 @@ if __name__ == '__main__':
     # print(h.get_min(), h.get_min())
     #
 
+    #
+    # print("\nPDF - remove_min example 2")
+    # print("--------------------------")
+    # h = MinHeap([4, 9, 6, 17, 26, 8, 16, 19, 69, 32, 93, 55, 50])
+    # while not h.is_empty():
+    #     print(h, end=' ')
+    #     print(h.remove_min())
+    #
+    #
+
+
 
     print("\nPDF - remove_min example 2")
     print("--------------------------")
-    h = MinHeap([4, 9, 6, 17, 26, 8, 16, 19, 69, 32, 93, 55, 50])
+    h = MinHeap([-984, -962, -961, -954, -954, -918, -942, -943, -924, -932, -954, -829, -866, -922, -792])
     while not h.is_empty():
         print(h, end=' ')
         print(h.remove_min())
