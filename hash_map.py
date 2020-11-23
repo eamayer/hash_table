@@ -89,8 +89,10 @@ class HashMap:
          then search for key in the linked list.
         """
 
-        hash_value = self.hash_value(key, self.hash_function)
-        index = self.index(hash_value, self.capacity)
+        # hash_value = self.hash_value(key, self.hash_function)
+        # index = self.index(hash_value, self.capacity)
+        index = self.hash_function(key) % self.capacity
+        print(index)
 
         if index > self.capacity:  # if the index is more than the capacity, it can't be in the hash table
             return
@@ -291,8 +293,8 @@ if __name__ == "__main__":
         m.put('str' + str(i), i * 100)
         # if i % 25 == 24:
         print(m.empty_buckets(), m.table_load(), m.size, m.capacity)
-        for i in range(50):
-            print(i, m.buckets.get_at_index(i))
+        # for i in range(50):
+        #     print(i, m.buckets.get_at_index(i))
 
 
     print("\nPDF - put example 2")
