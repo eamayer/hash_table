@@ -92,7 +92,6 @@ class HashMap:
         # hash_value = self.hash_value(key, self.hash_function)
         # index = self.index(hash_value, self.capacity)
         index = self.hash_function(key) % self.capacity
-        print(index)
 
         if index > self.capacity:  # if the index is more than the capacity, it can't be in the hash table
             return
