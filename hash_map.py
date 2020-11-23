@@ -71,6 +71,9 @@ class HashMap:
         self.hash_function = hash_function
         self.size = 0
 
+        # for i in range(capacity):
+        #     if self.buckets.get_at_index(i).remove()
+
 
     def get(self, key: str) -> object:
         """
@@ -131,6 +134,7 @@ class HashMap:
         for i in range(self.capacity):
             if self.buckets.get_at_index(i).contains(key) is not None:
                 self.buckets.get_at_index(i).remove(key)
+                self.size -= 1
 
     def contains_key(self, key: str) -> bool:
         """
@@ -259,30 +263,30 @@ if __name__ == "__main__":
     #     if i % 10 == 0:
     #         print(m.table_load(), m.size, m.capacity)
 
-    # print("\nPDF - clear example 1")
-    # print("---------------------")
-    # m = HashMap(100, hash_function_1)
-    # print(m.size, m.capacity)
-    # m.put('key1', 10)
-    # m.put('key2', 20)
-    # m.put('key1', 30)
-    # print(m.size, m.capacity)
-    # m.clear()
-    # print(m.size, m.capacity)
+    print("\nPDF - clear example 1")
+    print("---------------------")
+    m = HashMap(100, hash_function_1)
+    print(m.size, m.capacity)
+    m.put('key1', 10)
+    m.put('key2', 20)
+    m.put('key1', 30)
+    print(m.size, m.capacity)
+    m.clear()
+    print(m.size, m.capacity)
 
-    #
-    # print("\nPDF - clear example 2")
-    # print("---------------------")
-    # m = HashMap(50, hash_function_1)
-    # print(m.size, m.capacity)
-    # m.put('key1', 10)
-    # print(m.size, m.capacity)
-    # m.put('key2', 20)
-    # print(m.size, m.capacity)
-    # m.resize_table(100)
-    # print(m.size, m.capacity)
-    # m.clear()
-    # print(m.size, m.capacity)
+
+    print("\nPDF - clear example 2")
+    print("---------------------")
+    m = HashMap(50, hash_function_1)
+    print(m.size, m.capacity)
+    m.put('key1', 10)
+    print(m.size, m.capacity)
+    m.put('key2', 20)
+    print(m.size, m.capacity)
+    m.resize_table(100)
+    print(m.size, m.capacity)
+    m.clear()
+    print(m.size, m.capacity)
 
 
     print("\nPDF - put example 1")
