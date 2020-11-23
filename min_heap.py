@@ -117,11 +117,18 @@ class MinHeap:
         """
         TODO: Write this implementation
         """
-        n = self.heap.length()
+        da_length = da.length()
 
-        starting_index = (n//2) - 1  # finding the fist node that could have children
+        self.heap = DynamicArray()
 
-        self.trickle_down(starting_index)
+        for i in range(da_length):
+            value = da.get_at_index(i)
+            self.heap.append(value)
+
+        starting_index = (da_length//2) - 1  # finding the fist node that could have children
+
+        for j in range(starting_index, -1, -1):
+            self.trickle_down(j)
 
 
 # BASIC TESTING
@@ -195,7 +202,7 @@ if __name__ == '__main__':
 
     print("\nPDF - build_heap example 1")
     print("--------------------------")
-    da = DynamicArray([100, 20, 6, 200, 90, 150, 300])
+    da = DynamicArray([100, 20, 500, 200, 10, 100, 300])
     h = MinHeap(['zebra', 'apple'])
     print(h)
     h.build_heap(da)
