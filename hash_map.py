@@ -209,8 +209,19 @@ class HashMap:
         """
         TODO: Write this implementation
         """
+        get_keys_array = DynamicArray()
 
-        return DynamicArray()
+        for i in range(self.capacity):
+            if self.get_at_index(i).length() != 0:
+                myiter = iter(self.buckets.get_at_index(i))
+                while True:
+                    try:
+                        element = next(myiter)
+                        get_keys_array.append(element.key)
+                    except StopIteration:
+                        break
+
+        return get_keys_array
 
 
 # BASIC TESTING
