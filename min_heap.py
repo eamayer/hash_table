@@ -76,7 +76,10 @@ class MinHeap:
         """
         Return the minimum value in heap, which is always index 0
         """
-        return self.heap.get_at_index(0)
+        if self.heap.length() == 0:
+            raise MinHeapException
+        else:
+            return self.heap.get_at_index(0)
 
     def remove_min(self) -> object:
         """
@@ -136,13 +139,20 @@ if __name__ == '__main__':
     #     h.add(value)
     #     print(h)
     #
-    #
-    # print("\nPDF - get_min example 1")
+
+    print("\nPDF - get_min example 1")
+    print("-----------------------")
+    h = MinHeap(['fish', 'bird'])
+    print(h)
+    print(h.get_min(), h.get_min())
+
+    # print("\nPDF - get_min example raise exception")
     # print("-----------------------")
-    # h = MinHeap(['fish', 'bird'])
+    # h = MinHeap()
     # print(h)
     # print(h.get_min(), h.get_min())
     #
+
 
     print("\nPDF - remove_min example 2")
     print("--------------------------")
@@ -158,6 +168,13 @@ if __name__ == '__main__':
     while not h.is_empty():
         print(h, end=' ')
         print(h.remove_min())
+
+    print("\nPDF - remove_min example raise exception")
+    print("--------------------------")
+    h = MinHeap()
+    # while not h.is_empty():
+    #     print(h, end=' ')
+    # print(h.remove_min())
 
     #
     # print("\nPDF - build_heap example 1")
