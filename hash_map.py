@@ -175,17 +175,17 @@ class HashMap:
         the new hash map and all hash table links must be rehashed. If new_capacity is less than 1,
         this method should do nothing.
         """
-        new_hash_map = HashMap(new_capacity, self.hash_function)
-        old_capacity = self.capacity
-
-        self.resize_helper(new_capacity, old_capacity, new_hash_map)
-        self.update(new_hash_map)
+        if new_capacity < 1:
+            return
+        else:
+            new_hash_map = HashMap(new_capacity, self.hash_function)
+            old_capacity = self.capacity
+            self.resize_helper(new_capacity, old_capacity, new_hash_map)
+            self.update(new_hash_map)
 
 
     def resize_helper(self, new_capacity, old_capacity, new_hash_map):
 
-        if new_capacity < 1:
-            return
         for i in range(old_capacity):
             if self.get_at_index(i).length() != 0:
                 myiter = iter(self.buckets.get_at_index(i))
@@ -364,6 +364,14 @@ if __name__ == "__main__":
     m.remove('key1')
     print(m.get('key1'))
     m.remove('key4')
+
+    print("\nPDF - resize negtive")
+    print("----------------------")
+    m = HashMap(20, hash_function_1)
+    m.put('key1', 10)
+    print(m.size, m.capacity, m.get('key1'), m.contains_key('key1'))
+    m.resize_table(-100)
+    print(m.size, m.capacity, m.get('key1'), m.contains_key('key1'))
 
 
     print("\nPDF - resize example 1")
