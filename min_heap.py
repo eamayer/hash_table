@@ -46,7 +46,7 @@ class MinHeap:
 
     def add(self, node: object) -> None:
         """
-        TODO: Write this implementation
+        add a node to a heap
         """
 
         self.heap.append(node)
@@ -55,22 +55,28 @@ class MinHeap:
         self.bubble_up(i)
 
     def parent(self, i):
+        """identifies parent node"""
+
         return (i-1)//2
 
     def left(self, i):
+        """identifies the left child node"""
+
         return 2*i + 1
 
     def right(self, i):
+        """identifies the right child node"""
+
         return 2*(i+1)
 
     def bubble_up(self, i):
+        """"""
 
         p = self.parent(i)
         while i > 0 and self.heap.get_at_index(i) < self.heap.get_at_index(p):
             self.heap.swap(i, p)
             i = p
             p = self.parent(i)
-
 
     def get_min(self) -> object:
         """
