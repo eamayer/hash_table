@@ -194,7 +194,7 @@ class HashMap:
                 myiter = iter(self.buckets.get_at_index(i))  # uses iterator to loop through list
                 while True:
                     try:
-                        element = next(myiter)
+                        element = next(myiter)  # moves to next element
                         key = element.key
                         value = element.value
                         new_hash_map.put_helper_w_capacity(key, value, new_capacity)  # updates new hash map based on old value
@@ -216,7 +216,7 @@ class HashMap:
 
         for i in range(self.capacity):
             if self.get_length(i) != 0:  # bucket has element
-                myiter = iter(self.buckets.get_at_index(i))  # uses iterator to loop through list
+                myiter = iter(self.buckets.get_at_index(i))  # uses iterator to loop through list in bucket
                 while True:
                     try:
                         element = next(myiter)
